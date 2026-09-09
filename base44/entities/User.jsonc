@@ -1,0 +1,142 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "strava_access_token": {
+      "type": "string",
+      "description": "Strava API access token"
+    },
+    "strava_refresh_token": {
+      "type": "string",
+      "description": "Strava API refresh token"
+    },
+    "strava_expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Strava token expiration date"
+    },
+    "strava_athlete_id": {
+      "type": "number",
+      "description": "Strava athlete ID"
+    },
+    "age": {
+      "type": "number",
+      "description": "User's age"
+    },
+    "preferred_units": {
+      "type": "string",
+      "enum": [
+        "miles",
+        "kilometers"
+      ],
+      "default": "miles",
+      "description": "User's preferred distance/speed units"
+    },
+    "hr_zones": {
+      "type": "object",
+      "properties": {
+        "zone1_max": {
+          "type": "number"
+        },
+        "zone2_max": {
+          "type": "number"
+        },
+        "zone3_max": {
+          "type": "number"
+        },
+        "zone4_max": {
+          "type": "number"
+        },
+        "zone5_max": {
+          "type": "number"
+        }
+      },
+      "description": "User's heart rate zones"
+    },
+    "strava_pb_job_active": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the Strava Best Efforts backfill job is active."
+    },
+    "strava_pb_job_status": {
+      "type": "string",
+      "enum": [
+        "idle",
+        "running",
+        "paused",
+        "done",
+        "error"
+      ],
+      "default": "idle",
+      "description": "Current status of the Strava Best Efforts backfill job."
+    },
+    "strava_pb_lock_until_iso": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "If job is paused due to rate limits, it is locked until this time."
+    },
+    "strava_pb_last_error": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The last error message from the backfill job."
+    },
+    "strava_pb_after_epoch": {
+      "type": "number",
+      "description": "Cursor for incremental sync (timestamp)."
+    },
+    "strava_pb_before_epoch": {
+      "type": "number",
+      "description": "Cursor for backfill sync (timestamp)."
+    },
+    "strava_pb_backfill_done": {
+      "type": "boolean",
+      "default": false,
+      "description": "Flag indicating if the full history backfill is complete."
+    },
+    "strava_pb_progress": {
+      "type": "object",
+      "properties": {
+        "total_runs_processed": {
+          "type": "number"
+        },
+        "total_inserted": {
+          "type": "number"
+        },
+        "last_run_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "description": "Progress counters for the backfill job."
+    },
+    "strava_pb_after_iso": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "strava_pb_before_iso": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "strava_access_token",
+    "strava_refresh_token",
+    "strava_expires_at",
+    "strava_athlete_id",
+    "age",
+    "preferred_units",
+    "hr_zones",
+    "strava_pb_lock_until_iso",
+    "strava_pb_last_error",
+    "strava_pb_after_epoch",
+    "strava_pb_before_epoch",
+    "strava_pb_progress",
+    "strava_pb_after_iso",
+    "strava_pb_before_iso"
+  ]
+}

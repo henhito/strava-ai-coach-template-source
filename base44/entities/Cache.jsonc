@@ -1,0 +1,31 @@
+{
+  "name": "Cache",
+  "type": "object",
+  "properties": {
+    "cache_key": {
+      "type": "string",
+      "description": "Unique cache identifier"
+    },
+    "value": {
+      "type": "object",
+      "description": "Cached data"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Cache expiration time"
+    }
+  },
+  "required": [
+    "cache_key",
+    "value"
+  ],
+  "rls": {
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

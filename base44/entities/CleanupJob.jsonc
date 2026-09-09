@@ -1,0 +1,63 @@
+{
+  "name": "CleanupJob",
+  "type": "object",
+  "properties": {
+    "job_type": {
+      "type": "string",
+      "description": "Type of cleanup job (e.g. 'duplicate_activities')"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "idle",
+        "scanning",
+        "deleting",
+        "completed",
+        "error",
+        "stopped"
+      ],
+      "default": "idle",
+      "description": "Current status of the job"
+    },
+    "request_stop": {
+      "type": "boolean",
+      "default": false,
+      "description": "Set to true to request the background worker to stop gracefully"
+    },
+    "total_duplicates": {
+      "type": "number",
+      "default": 0,
+      "description": "Total duplicate rows found during scan"
+    },
+    "deleted_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of duplicate rows deleted so far"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Error details if status is error"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the job started"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the job finished"
+    }
+  },
+  "required": [
+    "job_type"
+  ],
+  "rls": {
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

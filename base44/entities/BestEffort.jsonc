@@ -1,0 +1,92 @@
+{
+  "name": "BestEffort",
+  "type": "object",
+  "properties": {
+    "activity_type": {
+      "type": "string",
+      "enum": [
+        "Run",
+        "Ride",
+        "VirtualRide",
+        "EBikeRide",
+        "GravelRide",
+        "MountainBikeRide"
+      ],
+      "description": "The type of activity (Run or Ride variations)"
+    },
+    "distance_name": {
+      "type": "string",
+      "description": "The name of the best effort distance (e.g., '1k', '5k', '40k')"
+    },
+    "elapsed_time_s": {
+      "type": "number",
+      "description": "The time in seconds for this best effort"
+    },
+    "activity_id": {
+      "type": "string",
+      "description": "The ID of the activity where this best effort was achieved"
+    },
+    "activity_name": {
+      "type": "string",
+      "description": "The name of the activity"
+    },
+    "activity_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date of the activity"
+    },
+    "distance_m": {
+      "type": "number",
+      "description": "The actual distance in meters"
+    },
+    "pace_s_per_km": {
+      "type": "number",
+      "description": "Pace in seconds per kilometer (mostly for Runs)"
+    },
+    "speed_kph": {
+      "type": "number",
+      "description": "Speed in km/h (mostly for Rides)"
+    },
+    "source": {
+      "type": "string",
+      "description": "Source of the best effort (e.g., 'strava')"
+    },
+    "rank": {
+      "type": "number",
+      "description": "Rank of the effort (1 = PR, 2 = 2nd best, etc.)"
+    },
+    "activity_id_norm": {
+      "type": "string",
+      "description": "Normalized activity ID for uniqueness enforcement"
+    },
+    "distance_name_canon": {
+      "type": "string",
+      "description": "Canonical distance name for uniqueness enforcement"
+    },
+    "activity_distance_key": {
+      "type": "string",
+      "unique": true,
+      "description": "Unique key: activity_id_norm|distance_name_canon"
+    }
+  },
+  "required": [
+    "activity_type",
+    "distance_name",
+    "elapsed_time_s",
+    "activity_id"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

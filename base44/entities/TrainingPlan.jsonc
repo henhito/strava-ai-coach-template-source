@@ -1,0 +1,109 @@
+{
+  "name": "TrainingPlan",
+  "type": "object",
+  "properties": {
+    "target_distance": {
+      "type": "string"
+    },
+    "plan_length_weeks": {
+      "type": "number"
+    },
+    "plan_overview": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "assumptions": {
+          "type": "string"
+        }
+      }
+    },
+    "pace_guide": {
+      "type": "object",
+      "properties": {
+        "easy": {
+          "type": "string"
+        },
+        "steady": {
+          "type": "string"
+        },
+        "tempo": {
+          "type": "string"
+        },
+        "race": {
+          "type": "string"
+        },
+        "interval": {
+          "type": "string"
+        }
+      }
+    },
+    "weekly_plan": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "week": {
+            "type": "number"
+          },
+          "focus": {
+            "type": "string"
+          },
+          "days": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "duration_min": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "distance_km": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "target_pace": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "effort_label": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "day",
+                "type",
+                "description"
+              ]
+            }
+          }
+        },
+        "required": [
+          "week",
+          "focus",
+          "days"
+        ]
+      }
+    }
+  },
+  "required": [
+    "target_distance",
+    "plan_length_weeks"
+  ]
+}

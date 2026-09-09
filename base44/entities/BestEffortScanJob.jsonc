@@ -1,0 +1,62 @@
+{
+  "name": "BestEffortScanJob",
+  "type": "object",
+  "properties": {
+    "job_type": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "running",
+        "paused",
+        "completed",
+        "error",
+        "stopped"
+      ],
+      "default": "running"
+    },
+    "processed_count": {
+      "type": "number",
+      "default": 0
+    },
+    "total_activities": {
+      "type": "number",
+      "default": 0
+    },
+    "created_count": {
+      "type": "number",
+      "default": 0
+    },
+    "next_offset": {
+      "type": "number",
+      "default": 0
+    },
+    "next_allowed_run_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "error_message": {
+      "type": "string"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "job_type"
+  ],
+  "rls": {
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

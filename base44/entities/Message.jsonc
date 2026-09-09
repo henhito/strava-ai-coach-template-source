@@ -1,0 +1,61 @@
+{
+  "name": "Message",
+  "type": "object",
+  "properties": {
+    "conversation_id": {
+      "type": "string",
+      "description": "ID of the conversation this message belongs to"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "user",
+        "assistant"
+      ],
+      "description": "Who sent the message"
+    },
+    "content": {
+      "type": "string",
+      "description": "The message content"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the message was sent"
+    },
+    "table_data": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Optional table data for activity displays"
+    },
+    "insights": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Optional insights data"
+    }
+  },
+  "required": [
+    "conversation_id",
+    "role",
+    "content",
+    "timestamp"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

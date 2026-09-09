@@ -1,0 +1,46 @@
+{
+  "name": "Athlete",
+  "type": "object",
+  "properties": {
+    "strava_id": {
+      "type": "number",
+      "description": "Strava athlete ID"
+    },
+    "username": {
+      "type": "string",
+      "description": "Strava username"
+    },
+    "firstname": {
+      "type": "string",
+      "description": "Athlete first name"
+    },
+    "lastname": {
+      "type": "string",
+      "description": "Athlete last name"
+    },
+    "access_token": {
+      "type": "string",
+      "description": "Encrypted OAuth access token"
+    },
+    "refresh_token": {
+      "type": "string",
+      "description": "Encrypted OAuth refresh token"
+    },
+    "token_expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Token expiration timestamp"
+    }
+  },
+  "required": [
+    "strava_id"
+  ],
+  "rls": {
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

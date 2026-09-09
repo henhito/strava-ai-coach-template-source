@@ -1,0 +1,145 @@
+{
+  "name": "Activity",
+  "type": "object",
+  "properties": {
+    "strava_id": {
+      "type": "number",
+      "description": "Strava activity ID"
+    },
+    "athlete_id": {
+      "type": "number",
+      "description": "Reference to athlete"
+    },
+    "name": {
+      "type": "string",
+      "description": "Activity name"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Run",
+        "TrailRun",
+        "VirtualRun",
+        "Ride",
+        "VirtualRide",
+        "EBikeRide",
+        "GravelRide",
+        "MountainBikeRide",
+        "Swim",
+        "Walk",
+        "Hike",
+        "WeightTraining",
+        "Yoga",
+        "Crossfit"
+      ],
+      "description": "Activity type"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "distance_m": {
+      "type": "number"
+    },
+    "moving_time_s": {
+      "type": "number"
+    },
+    "elapsed_time_s": {
+      "type": "number"
+    },
+    "total_elevation_gain_m": {
+      "type": "number"
+    },
+    "average_speed_mps": {
+      "type": "number"
+    },
+    "max_speed_mps": {
+      "type": "number"
+    },
+    "average_heartrate": {
+      "type": "number"
+    },
+    "max_heartrate": {
+      "type": "number"
+    },
+    "suffer_score": {
+      "type": "number"
+    },
+    "kudos_count": {
+      "type": "number"
+    },
+    "is_private": {
+      "type": "boolean"
+    },
+    "average_cadence": {
+      "type": "number"
+    },
+    "average_watts": {
+      "type": "number"
+    },
+    "average_temp": {
+      "type": "number"
+    },
+    "source_device_brand": {
+      "type": "string"
+    },
+    "athlete_note": {
+      "type": "string",
+      "description": "Free-text note written by the athlete about this activity; available to the coach agents."
+    },
+    "elite_coach_comment": {
+      "type": "string"
+    },
+    "raw_data": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "strava_id",
+    "athlete_id",
+    "name",
+    "type"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "data.athlete_id": "{{user.data.strava_athlete_id}}"
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "data.athlete_id": "{{user.data.strava_athlete_id}}"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "data.athlete_id": "{{user.data.strava_athlete_id}}"
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "data.athlete_id": "{{user.data.strava_athlete_id}}"
+        }
+      ]
+    }
+  }
+}

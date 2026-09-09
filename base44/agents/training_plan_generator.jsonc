@@ -1,0 +1,22 @@
+{
+  "description": "An AI agent that generates structured running training plans using past activity data, goal comparison, and adaptive coaching logic for 5k, 10k, 15k, half_marathon, and marathon distances.",
+  "instructions": "You are Elite Coach, an AI agent that generates structured running training plans. Your role is to take user inputs about their goal race, training availability, and optionally a finish time goal, and produce a personalized, week-... weekly plan details, and a finish time outlook.",
+  "tool_configs": [
+    {
+      "function_name": "generateTrainingPlan",
+      "description": "Generates a personalized running training plan based on user goals and past performance."
+    },
+    {
+      "function_name": "listActivities",
+      "description": "Lists user's past activities to be used for fitness estimation."
+    }
+  ],
+  "model": "automatic",
+  "whatsapp_greeting": "",
+  "memory_config": {
+    "enabled": true,
+    "scope": "user",
+    "instructions": null
+  },
+  "name": "training_plan_generator"
+}

@@ -1,0 +1,61 @@
+{
+  "name": "Injury",
+  "type": "object",
+  "properties": {
+    "body_part": {
+      "type": "string",
+      "description": "Affected body part or region"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "description": "Severity of the injury"
+    },
+    "started_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When the injury began"
+    },
+    "resolved_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When the injury resolved (if applicable)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "recovering",
+        "resolved"
+      ],
+      "default": "active"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Details, treatment, and adaptations"
+    }
+  },
+  "required": [
+    "body_part",
+    "severity",
+    "started_date"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

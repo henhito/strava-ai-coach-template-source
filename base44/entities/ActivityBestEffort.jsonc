@@ -1,0 +1,103 @@
+{
+  "name": "ActivityBestEffort",
+  "type": "object",
+  "properties": {
+    "activity_id": {
+      "type": "string"
+    },
+    "strava_id": {
+      "type": "string"
+    },
+    "athlete_id": {
+      "type": "string"
+    },
+    "effort_name": {
+      "type": "string"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "sort_order": {
+      "type": "number"
+    },
+    "distance_m": {
+      "type": "number"
+    },
+    "moving_time_s": {
+      "type": "number"
+    },
+    "elapsed_time_s": {
+      "type": "number"
+    },
+    "pace_s_per_km": {
+      "type": "number"
+    },
+    "average_heartrate": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "elevation_difference_m": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "start_index": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "end_index": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "pr_rank": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "source": {
+      "type": "string"
+    },
+    "synced_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "unique_key": {
+      "type": "string",
+      "unique": true
+    }
+  },
+  "required": [
+    "activity_id",
+    "strava_id",
+    "display_name",
+    "sort_order",
+    "distance_m",
+    "moving_time_s",
+    "pace_s_per_km",
+    "source",
+    "synced_at",
+    "unique_key"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

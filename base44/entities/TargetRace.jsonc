@@ -1,0 +1,59 @@
+{
+  "name": "TargetRace",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the race or event"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Race date"
+    },
+    "distance_m": {
+      "type": "number",
+      "description": "Race distance in metres"
+    },
+    "location": {
+      "type": "string",
+      "description": "Race location"
+    },
+    "goal_time_s": {
+      "type": "number",
+      "description": "Target finish time in seconds"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "A",
+        "B",
+        "C"
+      ],
+      "default": "B",
+      "description": "A-race is the primary target"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Course details, conditions, strategy"
+    }
+  },
+  "required": [
+    "name",
+    "date"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

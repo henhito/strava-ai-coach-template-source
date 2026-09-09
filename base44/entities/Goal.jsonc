@@ -1,0 +1,65 @@
+{
+  "name": "Goal",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Short description of the goal"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "distance",
+        "time",
+        "event",
+        "weight",
+        "other"
+      ],
+      "description": "Category of goal"
+    },
+    "target_value": {
+      "type": "number",
+      "description": "Numeric target value"
+    },
+    "target_unit": {
+      "type": "string",
+      "description": "Unit for the target value (e.g. km, min, kg)"
+    },
+    "deadline": {
+      "type": "string",
+      "format": "date",
+      "description": "Target completion date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "achieved",
+        "abandoned"
+      ],
+      "default": "active"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional context"
+    }
+  },
+  "required": [
+    "title",
+    "type"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

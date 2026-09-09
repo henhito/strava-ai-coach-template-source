@@ -1,0 +1,49 @@
+{
+  "name": "CoachingAnalysis",
+  "type": "object",
+  "properties": {
+    "activity_id": {
+      "type": "string",
+      "description": "Database ID of the analysed activity"
+    },
+    "analysis_json": {
+      "type": "object",
+      "description": "Full structured analysis output"
+    },
+    "coach_summary": {
+      "type": "string",
+      "description": "Short human-readable coaching summary"
+    },
+    "risk_flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Identified risk flags (e.g. overload, fatigue)"
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Actionable coaching recommendations"
+    }
+  },
+  "required": [
+    "activity_id"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

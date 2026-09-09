@@ -1,0 +1,41 @@
+{
+  "name": "Conversation",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Conversation title or project name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the conversation topic"
+    },
+    "last_activity": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this conversation was last active"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this conversation is active or archived"
+    },
+    "message_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of messages in this conversation"
+    },
+    "agent_conversation_id": {
+      "type": "string",
+      "description": "ID of the agent conversation (for Elite Coach agent)"
+    },
+    "analysis_generated": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether automatic training analysis has been generated for this conversation"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "ActivityStream",
+  "type": "object",
+  "properties": {
+    "activity_id": {
+      "type": "number",
+      "description": "Reference to activity"
+    },
+    "stream_type": {
+      "type": "string",
+      "enum": [
+        "time",
+        "heartrate",
+        "cadence",
+        "altitude",
+        "velocity_smooth",
+        "watts",
+        "latlng"
+      ],
+      "description": "Type of data stream"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "Time series data points"
+    }
+  },
+  "required": [
+    "activity_id",
+    "stream_type",
+    "data"
+  ],
+  "rls": {
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

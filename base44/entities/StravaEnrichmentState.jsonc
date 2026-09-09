@@ -1,0 +1,60 @@
+{
+  "name": "StravaEnrichmentState",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "idle",
+        "running",
+        "paused",
+        "completed",
+        "error"
+      ],
+      "default": "idle",
+      "description": "Current status of the enrichment process"
+    },
+    "processed_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total number of activities enriched for this user"
+    },
+    "total_activities_to_process": {
+      "type": "number",
+      "default": 0,
+      "description": "Snapshot of total activities needing enrichment when a run starts"
+    },
+    "last_activity_id_processed": {
+      "type": "string",
+      "description": "Database ID of the last activity successfully enriched"
+    },
+    "last_run_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the last time the enrichment process was run"
+    },
+    "rate_limit_hit_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the rate limit was last hit"
+    },
+    "next_allowed_run_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the process can be run again after hitting a rate limit"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Details of the last error that occurred"
+    }
+  },
+  "rls": {
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  },
+  "required": []
+}
